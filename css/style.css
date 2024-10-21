@@ -6,7 +6,7 @@
 }
 
 body {
-    background-image: url('../images/3078.jpg'); /* Adjust path based on the location */
+    background-image: url("../images/3078.jpg"); /* Adjust path based on the location */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
