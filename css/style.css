@@ -34,15 +34,39 @@ header {
     font-family: 'Poppins', sans-serif; /* Modern, clean font for the navbar */
 }
 
+/* Navbar link styles */
 .nav-links a {
     text-decoration: none;
-    color: #ff99cc; /* Light pink color for navigation links */
-    font-size: 1.2rem; /* Increase font size for better readability */
-    font-weight: bold; /* Bold navigation links */
+    color: #f2f2f2; /* Light pink color for navigation links */
+    font-size: 1.1rem; /* Slightly smaller */
+    font-weight: bold;
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition */
 }
 
+/* Hover effect: makes text pop and changes color */
 .nav-links a:hover {
-    color: #ccccff; /* Light purple on hover */
+    color: #09f815; /* Light purple on hover */
+    transform: scale(1.2); /* Slightly larger on hover */
+}
+
+/* Translucent navbar with see-through background */
+.translucent-header {
+    background: rgba(0, 0, 0, 0.3); /* Semi-transparent black */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 15px 0;
+    z-index: 1000;
+}
+
+/* Social media links in footer with see-through background */
+.translucent-footer {
+    background: rgba(0, 0, 0, 0.3); /* Semi-transparent black */
+    padding: 8px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 /* Hero section */
@@ -56,46 +80,51 @@ header {
     text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
 }
 
+/* Adjusting text sizes for the landing page */
 .hero-heading {
-    font-size: 4.5rem;
+    font-size: 3.5rem; /* Decrease the size */
     font-weight: bold;
-    letter-spacing: 3px;
-    color: #f2f2f2; /* Light text to contrast background */
+    letter-spacing: 2px;
+    color: #f2f2f2;
     margin-bottom: 20px;
 }
 
 .hero-subheading {
-    font-size: 2rem;
-    margin-bottom: 40px;
+    font-size: 1.5rem; /* Decrease the size */
+    margin-bottom: 20px;
     color: #f2f2f2;
 }
 
 .hero-tagline {
-    font-size: 1.5rem;
-    color: #ccccff; /* Subtle light shade */
+    font-size: 1.3rem; /* Decrease the size */
+    color: #f2f2f2;
 }
 
 /* Footer and Social Links */
-footer {
+/* footer {
     position: absolute;
     bottom: 20px;
     width: 100%;
     text-align: center;
-}
+} */
 
+/* Social media links */
 .social-links {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 40px; /* Increase gap for better spacing */
+    gap: 50px;
 }
 
+/* Social media icon hover effect */
 .social-links a {
     text-decoration: none;
     color: #f2f2f2;
-    font-size: 2rem; /* Bigger icons for better visibility */
+    font-size: 2.2rem; /* Increase icon size */
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition */
 }
 
 .social-links a:hover {
-    color: #ff99cc; /* Light pink on hover */
+    color: #09f815; /* Light pink on hover */
+    transform: scale(1.3); /* Larger scale on hover for noticeable effect */
 }
