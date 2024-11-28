@@ -72,58 +72,15 @@
                 </p>
             </div>
             
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    // Add functionality to the "Hire Me" button
-                    const hireMeButton = document.querySelector('.featured-text-btn .btn.blue-btn');
-                    if (hireMeButton) {
-                        hireMeButton.addEventListener('click', function() {
-                            window.location.href = 'mailto:arijit.samal@student-cs.fr';
-                        });
-                    } else {
-                        console.error('Hire Me button not found.');
-                    }
-
-                    // Add functionality to the "Download CV" button
-                    const downloadCVButton = document.querySelector('.featured-text-btn .btn:not(.blue-btn)');
-                    if (downloadCVButton) {
-                        downloadCVButton.addEventListener('click', function() {
-                            window.location.href = 'assets/resume/ARIJIT_RESUME.pdf';
-                        });
-                    } else {
-                        console.error('Download CV button not found.');
-                    }
-
-                    // Add functionality to social media buttons
-                    const socialIcons = {
-                        github: 'https://github.com/1-ARIjitS',
-                        devpost: 'https://devpost.com/arijits19',
-                        linkedin: 'https://www.linkedin.com/in/arijit-samal1',
-                        mail: 'mailto:arijit.samal@student-cs.fr'
-                    };
-
-                    Object.keys(socialIcons).forEach(key => {
-                        const socialButton = document.querySelector(`.social_icons .icon.${key}`);
-                        if (socialButton) {
-                            socialButton.addEventListener('click', function() {
-                                if (key === 'mail') {
-                                    window.location.href = socialIcons[key];
-                                } else {
-                                    window.open(socialIcons[key], '_blank');
-                                }
-                            });
-                        } else {
-                            console.error(`${key} button not found.`);
-                        }
-                    });
-                });
-            </script>
-
-           <div class="featured-text-btn">
+           <!-- <div class="featured-text-btn">
                 <button class="btn blue-btn">Hire Me</button>
                 <a href="assets/resume/ARIJIT_RESUME.pdf" class="btn" download="Arijit_Samal_Resume.pdf">
                     Download CV <i class="uil uil-file-alt"></i>
                 </a>
+            </div> -->
+            <div class="featured-text-btn">
+                <button class="btn blue-btn">Hire Me</button>
+                <button class="btn">Download CV <i class="uil uil-file-alt"></i></button>
             </div>
 
             <div class="social_icons">
@@ -336,21 +293,17 @@
                 </li>
             </ul>
         </div>
-        <div class="footer-social-icons">
-            <div class="icon"><i class="uil uil-instagram"></i></div>
-            <div class="icon"><i class="uil uil-linkedin-alt"></i></div>
-            <div class="icon"><i class="uil uil-dribbble"></i></div>
-            <div class="icon"><i class="uil uil-github-alt"></i></div>
+        <div class="footer-social-icons social_icons">
+            <div class="icon github"><i class="uil uil-github-alt"></i></div>
+            <div class="icon devpost"><i class="uil uil-code-branch"></i></div>
+            <div class="icon linkedin"><i class="uil uil-linkedin-alt"></i></div>
+            <div class="icon mail"><i class="uil uil-envelope"></i></div>
         </div>
         <div class="bottom-footer">
             <p>Copyright &copy; <a href="#home" style="text-decoration: none;">ARIJIT SAMAL</a> - All rights reserved</p>
         </div>
     </footer>
-
-    </div>
-
-
-
+    <!-- </div> -->
 
     <!-- ----- TYPING JS Link ----- -->
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
