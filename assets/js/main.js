@@ -195,3 +195,59 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error('Hire Me button not found in the header.');
     }
 });
+
+/* ----- ## -- EMAIL REQUEST FOR COLLABORATION -- ## ----- */
+document.addEventListener("DOMContentLoaded", function () {
+    // Initialize EmailJS
+    emailjs.init("jN4KPTic6keCH-_P2"); // Replace with your Public Key
+    console.log("EmailJS Initialized");
+
+    // Function to send email
+    function sendEmail() {
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
+
+        console.log("Name:", name); 
+        console.log("Email:", email);
+        console.log("Message:", message); 
+
+        // Validate input fields
+        if (!name || !email || !message) {
+            alert("Please fill out all fields!");
+            console.log("Missing fields: Name, Email, or Message");
+            return;
+        }
+
+        // Prepare the template parameters
+        const templateParams = {
+            from_name: name,
+            from_email: email,
+            message: message,
+        };
+
+        console.log("Sending email with parameters:", templateParams);
+
+        // Send the email using EmailJS
+        emailjs.sendEmail("service_3ew9t67", "template_tu123hy", templateParams)
+            .then((response) => {
+                console.log("EmailJS response:", response);
+                alert("Email sent successfully!");
+                console.log("SUCCESS:", response.status, response.text);
+            })
+            .catch((error) => {
+                console.log("Error occurred in email sending:", error);
+                alert("Failed to send email. Check the console for details.");
+                console.error("ERROR:", error);
+                console.log("Error Details:", error);
+            });
+    }
+
+    // Attach the sendEmail function to the button's click event
+    const sendButton = document.querySelector(".btn");
+    if (sendButton) {
+        sendButton.addEventListener("click", sendEmail);
+    } else {
+        console.error("Send button not found.");
+    }
+});
