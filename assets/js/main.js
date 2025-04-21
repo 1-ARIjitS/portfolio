@@ -16,28 +16,22 @@
       const navHeader =document.getElementById("header");
 
       if (document.body.scrollTop > 50 || document.documentElement.scrollTop >  50) {
-
-        navHeader.style.boxShadow = "0 1px 6px rgba(0, 0, 0, 0.1)";
-        navHeader.style.height = "70px";
-        navHeader.style.lineHeight = "70px";
-
+        // Add class when scrolled
+        navHeader.classList.add("header-scrolled");
       } else {
-
-        navHeader.style.boxShadow = "none";
-        navHeader.style.height = "90px";
-        navHeader.style.lineHeight = "90px";
-
+        // Remove class when at top
+        navHeader.classList.remove("header-scrolled");
       }
     }
 
 
 /* ----- TYPING EFFECT ----- */
    var typingEffect = new Typed(".typedText",{
-      strings : ["Data Scientist"],
+      strings : ["Data Scientist"], /* Only one title now */
       loop : true,
-      typeSpeed : 100, 
-      backSpeed : 80,
-      backDelay : 2000
+      typeSpeed : 120, 
+      backSpeed : 90,
+      backDelay : 3000
    })
 
 
@@ -58,8 +52,12 @@
   sr.reveal('.featured-image',{delay: 300})
   
 
-  /* -- PROJECT BOX -- */
-  sr.reveal('.project-box',{interval: 200})
+  /* -- PROJECT LIST (Simplified Layout) -- */
+  // Updated selector from .project-card to .project-item
+  sr.reveal('.project-item',{interval: 200}) // Changed selector
+
+  /* -- PUBLICATIONS BOX -- */
+  sr.reveal('.publication-card',{interval: 200})
 
   /* -- HEADINGS -- */
   sr.reveal('.top-header',{})
@@ -76,6 +74,8 @@
   
   srLeft.reveal('.about-info',{delay: 100})
   srLeft.reveal('.contact-info',{delay: 100})
+  // Changed target from .experience-item to .experience-card and added interval
+  srLeft.reveal('.experience-card',{delay: 100, interval: 200}) 
 
   /* -- ABOUT SKILLS & FORM BOX -- */
   const srRight = ScrollReveal({
@@ -102,14 +102,14 @@
           sectionTop = current.offsetTop - 50,
         sectionId = current.getAttribute('id')
 
-      if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) { 
+      const link = document.querySelector('.nav-menu a[href*=' + sectionId + ']'); // Get the link
 
-          document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.add('active-link')
-
-      }  else {
-
-        document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.remove('active-link')
-
+      if(link) { // Check if the link exists before trying to add/remove class
+          if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) { 
+              link.classList.add('active-link')
+          }  else {
+              link.classList.remove('active-link')
+          }
       }
     })
   }
@@ -133,13 +133,9 @@ document.addEventListener('DOMContentLoaded', function () {
             Object.keys(socialLinks).forEach(key => {
                 const iconElement = container.querySelector(`.icon.${key}`);
                 if (iconElement) {
+                    // Fix: Open link in new tab on click
                     iconElement.addEventListener('click', function () {
-                        const url = socialLinks[key];
-                        if (url.startsWith('mailto:')) {
-                            window.location.href = url;
-                        } else {
-                            window.open(url, '_blank');
-                        }
+                        window.open(socialLinks[key], '_blank'); 
                     });
                 } else {
                     console.warn(`Icon with class '${key}' not found in '${containerSelector}'`);
@@ -196,10 +192,80 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+/* ----- PUBLICATION CARD EXPAND/COLLAPSE ----- */
+document.addEventListener('DOMContentLoaded', function() {
+    const publicationCards = document.querySelectorAll('.publication-card');
+
+    publicationCards.forEach(card => {
+        const detailsButton = card.querySelector('.details-btn');
+        const detailsContent = card.querySelector('.publication-details');
+        const abstractButton = card.querySelector('.abstract-btn'); // Get abstract button
+        const abstractContent = card.querySelector('.publication-abstract'); // Get abstract content
+
+        // Handle Details Button
+        if (detailsButton && detailsContent) {
+            detailsButton.addEventListener('click', () => {
+                const isDetailsExpanded = detailsContent.classList.toggle('expanded');
+                detailsButton.innerHTML = isDetailsExpanded ? '<i class="uil uil-minus-circle"></i> Hide Details' : '<i class="uil uil-info-circle"></i> Details';
+                
+                // Collapse abstract if details are expanded and abstract exists/is expanded
+                if (isDetailsExpanded && abstractContent && abstractContent.classList.contains('expanded')) {
+                    abstractContent.classList.remove('expanded');
+                    if (abstractButton) {
+                        abstractButton.innerHTML = '<i class="uil uil-file-alt"></i> Abstract';
+                    }
+                }
+            });
+        }
+
+        // Handle Abstract Button
+        if (abstractButton && abstractContent) {
+            abstractButton.addEventListener('click', () => {
+                const isAbstractExpanded = abstractContent.classList.toggle('expanded');
+                abstractButton.innerHTML = isAbstractExpanded ? '<i class="uil uil-minus-circle"></i> Hide Abstract' : '<i class="uil uil-file-alt"></i> Abstract';
+
+                 // Collapse details if abstract is expanded and details exists/is expanded
+                if (isAbstractExpanded && detailsContent && detailsContent.classList.contains('expanded')) {
+                     detailsContent.classList.remove('expanded');
+                     if (detailsButton) {
+                         detailsButton.innerHTML = '<i class="uil uil-info-circle"></i> Details';
+                     }
+                }
+            });
+        }
+    });
+});
+
+
+/* ----- PROJECT CARD EXPAND/COLLAPSE ----- */
+// Remove this entire section as project cards are no longer expandable
+
+/* ----- THEME TOGGLE ----- */
+const themeToggle = document.querySelector('.theme-toggle');
+const themeIcon = themeToggle.querySelector('i');
+
+// Check if user has a saved theme preference
+const savedTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+updateThemeIcon(savedTheme);
+
+themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+});
+
+function updateThemeIcon(theme) {
+    themeIcon.className = theme === 'light' ? 'uil uil-sun' : 'uil uil-moon';
+}
+
 /* ----- ## -- EMAIL REQUEST FOR COLLABORATION -- ## ----- */
 document.addEventListener("DOMContentLoaded", function () {
     // Initialize EmailJS
-    emailjs.init("jN4KPTic6keCH-_P2"); // Replace with your Public Key
+    emailjs.init("jN4KPTic6keCH-_P2"); // Your Public Key
     console.log("EmailJS Initialized");
 
     // Function to send email
@@ -228,25 +294,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
         console.log("Sending email with parameters:", templateParams);
 
-        // Send the email using EmailJS
-        emailjs.sendEmail("service_3ew9t67", "template_tu123hy", templateParams)
-            .then((response) => {
+        // Send the email using EmailJS - fixed function name
+        emailjs.send("service_3ew9t67", "template_tu123hy", templateParams)
+            .then((response) => { // Ensure correct block structure
                 console.log("EmailJS response:", response);
                 alert("Email sent successfully!");
                 console.log("SUCCESS:", response.status, response.text);
-            })
-            .catch((error) => {
+                // Clear the form fields after successful submission
+                document.getElementById("name").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("message").value = "";
+            }) // End .then() block
+            .catch((error) => { // Ensure correct block structure
                 console.log("Error occurred in email sending:", error);
                 alert("Failed to send email. Check the console for details.");
                 console.error("ERROR:", error);
-                console.log("Error Details:", error);
-            });
+            }); // End .catch() block and add semicolon
     }
 
     // Attach the sendEmail function to the button's click event
-    const sendButton = document.querySelector(".btn");
+    const sendButton = document.querySelector(".form-button .btn");
     if (sendButton) {
         sendButton.addEventListener("click", sendEmail);
+        console.log("Email send button listener attached");
     } else {
         console.error("Send button not found.");
     }
