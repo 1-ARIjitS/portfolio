@@ -619,14 +619,14 @@ h3 i {
 .education-header {
     display: flex;
     align-items: center; /* Vertically align logos and text */
-    gap: 20px; /* Space between logos and text block */
-    margin-bottom: 20px;
+    gap: 25px; /* Increased gap between BDMA logo and text */
+    margin-bottom: 25px; /* Increased bottom margin */
     flex-wrap: wrap; /* Allow wrapping if needed */
 }
 
 /* Style for the BDMA logo in the header */
 .bdma-logo {
-    height: 50px; /* Adjust size as needed */
+    height: 60px; /* Increased BDMA logo size */
     width: auto;
     object-fit: contain;
     flex-shrink: 0; /* Prevent shrinking */
@@ -648,7 +648,8 @@ h3 i {
 }
 
 .uni-logo.single-logo {
-    height: 50px; /* Slightly larger for single logo */
+    height: 70px; /* Slightly larger for single logo */
+    width: 80px;
 }
 
 .education-title-details {
@@ -705,8 +706,8 @@ h3 i {
 }
 
 .list-uni-logo {
-    height: 35px; /* Size for logos within list items */
-    width: 100px; /* Increased width */
+    height: 50px; /* Slightly increased height */
+    width: 180px; /* Increased width */
     object-fit: contain;
     border-radius: 4px;
     background-color: #fff;
@@ -1448,7 +1449,8 @@ footer{
         font-size: 1.4rem;
     }
     .list-uni-logo {
-        height: 30px; /* Adjust list logo size */
+        height: 35px; /* Adjust list logo size */
+        width: 100px; /* Adjust width */
     }
     /* ...rest of 900px styles... */
 }
@@ -1565,7 +1567,7 @@ footer{
         align-items: center; /* Keep vertical alignment */
     }
     .bdma-logo {
-        height: 40px; /* Adjust BDMA logo size for small screens */
+        height: 100px; /* Adjust BDMA logo size for small screens */
     }
     .single-item-header {
         flex-direction: column; /* Stack logo and text vertically */
@@ -1580,7 +1582,7 @@ footer{
         font-size: 0.9rem;
     }
     .list-uni-logo {
-        height: 28px; /* Further adjust list logo size */
-        width: 70px; /* Adjust width for smaller screens */
+        height: 30px; /* Further adjust list logo size */
+        width: 80px; /* Adjust width for smaller screens */
     }
 }
