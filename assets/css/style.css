@@ -531,7 +531,7 @@ h3 i {
 .about-info p{
     text-align: left; /* Align text left */
     font-size: 1rem;
-    color: var(--text-color-secondary);
+    color: var (--text-color-secondary);
     margin-bottom: 25px;
 }
 .about-btn {
@@ -584,6 +584,173 @@ h3 i {
     background: var(--primary-color);
     transform: translateY(-3px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ----- EDUCATION SECTION ----- */
+.education-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Space between education cards */
+    margin-top: 30px;
+}
+
+.education-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+    padding: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid transparent; /* For dark mode consistency */
+}
+
+.education-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] .education-card {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .education-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.education-header {
+    display: flex;
+    align-items: center; /* Vertically align logos and text */
+    gap: 20px; /* Space between logos and text block */
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Allow wrapping if needed */
+}
+
+/* Style for the BDMA logo in the header */
+.bdma-logo {
+    height: 50px; /* Adjust size as needed */
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0; /* Prevent shrinking */
+    border-radius: 4px;
+    background-color: #fff; /* Optional: if logo needs background */
+    padding: 3px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.uni-logo {
+    height: 40px; /* Adjust logo height */
+    width: auto; /* Maintain aspect ratio */
+    object-fit: contain;
+    border-radius: 4px; /* Slightly rounded corners for logos */
+    background-color: #fff; /* White background for logos if needed */
+    padding: 3px; /* Small padding around logo */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    flex-shrink: 0; /* Prevent logo from shrinking */
+}
+
+.uni-logo.single-logo {
+    height: 50px; /* Slightly larger for single logo */
+}
+
+.education-title-details {
+    flex: 1; /* Allow text block to take remaining space */
+}
+
+.education-item h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    color: var(--text-color-primary);
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.education-item h2 i {
+    color: var(--primary-color);
+    font-size: 1.7rem;
+}
+
+.education-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 15px; /* Row and column gap */
+    color: var(--text-color-secondary);
+    font-size: 0.9rem;
+}
+
+.education-details span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.education-details span i {
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.education-item ul {
+    list-style: none;
+    padding-left: 10px; /* Indent list slightly */
+    margin-top: 15px;
+}
+
+/* New styles for list items containing logos */
+.education-list-with-logos li {
+    display: flex;
+    align-items: center; /* Align logo and text vertically */
+    gap: 15px; /* Space between logo and text */
+    margin-bottom: 15px;
+}
+
+.list-uni-logo {
+    height: 35px; /* Size for logos within list items */
+    width: 100px; /* Increased width */
+    object-fit: contain;
+    border-radius: 4px;
+    background-color: #fff;
+    padding: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    flex-shrink: 0;
+}
+
+.list-item-content {
+    flex: 1; /* Allow text content to take remaining space */
+    color: var(--text-color-secondary);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.list-item-content strong {
+    color: var(--text-color-primary);
+    font-weight: 500;
+}
+
+.list-item-content em {
+    font-style: italic;
+    color: var(--text-color-secondary);
+    font-size: 0.9rem;
+    display: block; /* Put emphasis on new line */
+    margin-top: 2px;
+}
+
+/* Original list item styles (for IISER card) */
+.education-item ul:not(.education-list-with-logos) li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    color: var(--text-color-secondary);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.education-item ul:not(.education-list-with-logos) li i {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-top: 5px; /* Align icon nicely with text */
+    flex-shrink: 0;
 }
 
 /* ----- EXPERIENCE SECTION ----- */
@@ -1268,7 +1435,22 @@ footer{
     .form-control {
         height: auto; /* Reset height */
     }
-
+    .education-header {
+        gap: 15px;
+    }
+    .uni-logo {
+        height: 35px;
+    }
+    .uni-logo.single-logo {
+        height: 45px;
+    }
+    .education-item h2 {
+        font-size: 1.4rem;
+    }
+    .list-uni-logo {
+        height: 30px; /* Adjust list logo size */
+    }
+    /* ...rest of 900px styles... */
 }
 
 /* ----- MEDIA QUERY == 768px / RESPONSIVE ----- */
@@ -1374,5 +1556,31 @@ footer{
     }
     .experience-item ul li {
         font-size: 0.9rem;
+    }
+    .education-card {
+        padding: 20px;
+    }
+    .education-header {
+        flex-direction: row; /* Keep row layout even on small screens for header */
+        align-items: center; /* Keep vertical alignment */
+    }
+    .bdma-logo {
+        height: 40px; /* Adjust BDMA logo size for small screens */
+    }
+    .single-item-header {
+        flex-direction: column; /* Stack logo and text vertically */
+        align-items: flex-start; /* Align items to the start */
+        gap: 10px; /* Reduce gap when stacked */
+    }
+    .education-item h2 {
+        font-size: 1.3rem;
+    }
+    .education-item ul li,
+    .list-item-content {
+        font-size: 0.9rem;
+    }
+    .list-uni-logo {
+        height: 28px; /* Further adjust list logo size */
+        width: 70px; /* Adjust width for smaller screens */
     }
 }
