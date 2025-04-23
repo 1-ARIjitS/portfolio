@@ -51,6 +51,8 @@
   sr.reveal('.social_icons',{delay: 200})
   sr.reveal('.featured-image',{delay: 300})
   
+  /* -- EDUCATION SECTION -- */
+  sr.reveal('.education-card',{interval: 200})
 
   /* -- PROJECT LIST (Simplified Layout) -- */
   // Updated selector from .project-card to .project-item
@@ -102,6 +104,7 @@
           sectionTop = current.offsetTop - 50,
         sectionId = current.getAttribute('id')
 
+      // Ensure the selector includes the new education link
       const link = document.querySelector('.nav-menu a[href*=' + sectionId + ']'); // Get the link
 
       if(link) { // Check if the link exists before trying to add/remove class
