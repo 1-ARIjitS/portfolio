@@ -9,42 +9,44 @@
     /* Light Mode Colors */
     --body-color: #f9fafb;
     --color-white: #ffffff;
-    --text-color-primary: #1f2937; /* Slightly darker primary text */
+    --text-color-primary: #1f2937;
     --text-color-secondary: #4b5563;
-    --text-color-accent: #0284c7; /* Adjusted blue */
-    --primary-color: #0284c7; /* Adjusted primary blue */
-    --primary-color-hover: #0369a1; /* Darker hover */
-    --secondary-color: #6b7280;
-    --accent-color: #16a34a; /* Keep green accent */
+    --text-color-accent: #0284c7;
+    --primary-color: #0284c7;
+    --primary-color-hover: #0369a1;
+    --secondary-color: #e5e7eb; /* Lighter gray for borders/backgrounds */
+    --accent-color: #16a34a;
     --accent-text: #ffffff;
-    --highlight-color: #0ea5e9; /* Brighter cyan/sky blue for highlight */
+    --highlight-color: #0ea5e9;
     --card-bg: #ffffff;
-    --card-shadow: 0 5px 18px rgba(0, 0, 0, 0.07); /* Softer shadow */
-    --nav-bg: rgba(255, 255, 255, 0.97); /* Slightly less transparent */
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* More subtle, layered shadow */
+    --card-border: 1px solid #e5e7eb; /* Subtle border for cards */
+    --nav-bg: rgba(255, 255, 255, 0.95); /* Slightly more transparent with backdrop-filter */
     --footer-bg: #f3f4f6;
     --icon-color: #374151;
-    --input-bg: #f1f5f9;
+    --input-bg: #f3f4f7; /* Slightly different from footer for contrast */
 }
 
 /* Dark Mode Colors */
 [data-theme="dark"] {
-    --body-color: #0f172a; /* Darker blue-gray background */
-    --color-white: #1e293b; /* Darker card background */
-    --text-color-primary: #f1f5f9; /* Lighter primary text */
-    --text-color-secondary: #cbd5e1; /* Lighter secondary text */
-    --text-color-accent: #38bdf8; /* Lighter sky blue accent */
-    --primary-color: #38bdf8; /* Match accent */
-    --primary-color-hover: #0ea5e9; /* Slightly darker hover */
-    --secondary-color: #94a3b8;
-    --accent-color: #10b981; /* Keep bright green */
+    --body-color: #0f172a;
+    --color-white: #1e293b;
+    --text-color-primary: #f1f5f9;
+    --text-color-secondary: #94a3b8; /* Increased lightness for better contrast */
+    --text-color-accent: #38bdf8;
+    --primary-color: #38bdf8;
+    --primary-color-hover: #0ea5e9;
+    --secondary-color: #334155; /* Darker gray for borders in dark mode */
+    --accent-color: #10b981;
     --accent-text: #ffffff;
-    --highlight-color: #67e8f9; /* Brighter cyan highlight */
-    --card-bg: #1e293b; /* Dark card background */
-    --card-shadow: 0 7px 25px rgba(0, 0, 0, 0.3); /* Stronger shadow */
-    --nav-bg: rgba(15, 23, 42, 0.97); /* Match body bg, slightly less transparent */
-    --footer-bg: #0b1120; /* Darker footer */
+    --highlight-color: #67e8f9;
+    --card-bg: #1e293b;
+    --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.15); /* Adjusted for dark theme */
+    --card-border: 1px solid #334155; /* Subtle border for dark cards */
+    --nav-bg: rgba(15, 23, 42, 0.95);
+    --footer-bg: #0b1120;
     --icon-color: #cbd5e1;
-    --input-bg: #334155; /* Darker input */
+    --input-bg: #334155;
 }
 
 /* ----- BASE ----- */
@@ -228,11 +230,12 @@ nav.header-scrolled {
     font-weight: 500;
     padding-inline: 15px;
     margin-inline: 20px;
-    transition: color 0.3s ease; /* Add transition for hover */
+    transition: color 0.3s ease, transform 0.3s ease; /* Add transition for hover */
 }
 /* Add hover effect */
 .nav-link:hover {
     color: var(--primary-color);
+    transform: translateY(-2px);
 }
 .nav-menu-btn{
     display: none;
@@ -294,7 +297,7 @@ nav.header-scrolled {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 .featured-name{
-    font-size: 3.2rem; /* Adjusted font size */
+    font-size: clamp(2.4rem, 1.5rem + 3vw, 3.2rem); /* Fluid font size */
     font-weight: 700;
     font-family: 'Outfit', sans-serif; /* New modern font */
     color: var(--text-color-primary);
@@ -307,7 +310,7 @@ nav.header-scrolled {
     color: var(--highlight-color); 
     position: relative;
     font-weight: 600; /* Slightly less bold */
-    font-size: 3rem; /* Adjusted size slightly smaller than name */
+    font-size: clamp(2.2rem, 1.3rem + 3vw, 3rem); /* Fluid font size */
     display: inline-block;
     white-space: nowrap;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); /* Subtle shadow for highlight */
@@ -319,7 +322,7 @@ nav.header-scrolled {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.3rem;
     font-weight: 500;
-    color: var(--primary-color);
+    color: var(--text-color-primary);
     letter-spacing: 0.5px;
     padding: 5px 0;
     margin-bottom: 30px;
@@ -473,7 +476,7 @@ nav.header-scrolled {
     margin-bottom: 5em;
 }
 .top-header h1{
-    font-size: 2.8rem;
+    font-size: clamp(2rem, 1.5rem + 2vw, 2.8rem); /* Fluid heading size */
     font-weight: 700;
     color: var(--text-color-primary);
     margin-bottom: 15px;
@@ -503,7 +506,7 @@ h3 i {
     padding: 35px;
     box-shadow: var(--card-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid transparent; /* Prepare for potential border */
+    border: var(--card-border);
 }
 [data-theme="dark"] .about-info, 
 [data-theme="dark"] .skills-box, 
@@ -531,7 +534,7 @@ h3 i {
 .about-info p{
     text-align: left; /* Align text left */
     font-size: 1rem;
-    color: var (--text-color-secondary);
+    color: var(--text-color-secondary);
     margin-bottom: 25px;
 }
 .about-btn {
@@ -545,7 +548,7 @@ h3 i {
     border-radius: 30px;
 }
 .about-btn button:hover{
-    background: var (--primary-color-hover);
+    background: var(--primary-color-hover);
 }
 
 /* ----- ABOUT / SKILLS BOX ----- */
@@ -555,6 +558,7 @@ h3 i {
     border-radius: 15px;
     box-shadow: var(--card-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: var(--card-border);
 }
 .skills-header{
     margin-bottom: 25px;
@@ -600,7 +604,7 @@ h3 i {
     box-shadow: var(--card-shadow);
     padding: 30px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid transparent; /* For dark mode consistency */
+    border: var(--card-border);
 }
 
 .education-card:hover {
@@ -609,7 +613,7 @@ h3 i {
 }
 
 [data-theme="dark"] .education-card {
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: var(--card-border);
 }
 
 [data-theme="dark"] .education-card:hover {
@@ -834,13 +838,9 @@ h3 i {
     margin-bottom: 30px; /* Space between cards */
     box-shadow: var(--card-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid transparent; /* Prepare for dark mode border */
+    border: var(--card-border);
     overflow: hidden; /* Optional: if needed */
     position: relative; /* Optional: if needed */
-}
-
-[data-theme="dark"] .experience-card {
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border in dark mode */
 }
 
 .experience-card:hover {
@@ -875,7 +875,7 @@ h3 i {
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid transparent; /* Add border for consistency */
+    border: var(--card-border);
 }
 
 .publication-card:hover {
@@ -1007,7 +1007,7 @@ h3 i {
     box-shadow: var(--card-shadow);
     padding: 30px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid transparent; /* For dark mode consistency */
+    border: var(--card-border);
 }
 
 .project-item:hover {
@@ -1016,7 +1016,7 @@ h3 i {
 }
 
 [data-theme="dark"] .project-item {
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: var(--card-border);
 }
 
 [data-theme="dark"] .project-item:hover {
@@ -1140,7 +1140,7 @@ h3 i {
     padding: 40px; /* Increased padding */
     box-shadow: var(--card-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid transparent;
+    border: var(--card-border);
     height: 100%; /* Make card fill column height */
     justify-content: center; /* Center content vertically */
 }
@@ -1149,7 +1149,7 @@ h3 i {
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
 }
 [data-theme="dark"] .contact-info {
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: var(--card-border);
 }
 [data-theme="dark"] .contact-info:hover {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
@@ -1214,6 +1214,7 @@ h3 i {
     box-shadow: var(--card-shadow);
     height: 100%; /* Make form fill column height */
     justify-content: space-between; /* Space out elements */
+    border: var(--card-border);
 }
 .form-inputs{
     display: flex;
@@ -1234,7 +1235,7 @@ h3 i {
 }
 [data-theme="dark"] .input-field, 
 [data-theme="dark"] textarea {
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-color: var(--secondary-color);
 }
 .input-field:focus {
     border-color: var(--primary-color);
@@ -1345,12 +1346,6 @@ footer{
         width: 380px;
         height: 380px;
     }
-    .featured-name {
-        font-size: 3rem;
-    }
-    .tech-stack {
-        font-size: 1.1rem;
-    }
 }
 
 /* ----- MEDIA QUERY == 900px / RESPONSIVE ----- */
@@ -1452,19 +1447,10 @@ footer{
         height: 35px; /* Adjust list logo size */
         width: 100px; /* Adjust width */
     }
-    /* ...rest of 900px styles... */
 }
 
 /* ----- MEDIA QUERY == 768px / RESPONSIVE ----- */
 @media only screen and (max-width: 768px) { /* Added breakpoint */
-    .featured-name {
-        font-size: 2.4rem; /* Adjust font size for smaller screens */
-        white-space: normal; /* Allow wrapping on very small screens */
-    }
-    .typedText {
-        font-size: 2.2rem; /* Adjust size */
-        white-space: normal; /* Allow wrapping if needed */
-    }
     .tech-stack {
         font-size: 1rem;
         border-width: 2px;
@@ -1567,7 +1553,7 @@ footer{
         align-items: center; /* Keep vertical alignment */
     }
     .bdma-logo {
-        height: 100px; /* Adjust BDMA logo size for small screens */
+        height: 60px; /* Corrected logo size for small screens */
     }
     .single-item-header {
         flex-direction: column; /* Stack logo and text vertically */
@@ -1581,8 +1567,14 @@ footer{
     .list-item-content {
         font-size: 0.9rem;
     }
+    .education-list-with-logos li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
     .list-uni-logo {
-        height: 30px; /* Further adjust list logo size */
-        width: 80px; /* Adjust width for smaller screens */
+        height: 40px; /* Further adjust list logo size */
+        width: auto; /* Adjust width for smaller screens */
+        max-width: 160px;
     }
 }
