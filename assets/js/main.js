@@ -27,7 +27,7 @@
 
 /* ----- TYPING EFFECT ----- */
    var typingEffect = new Typed(".typedText",{
-      strings : ["Data Scientist"], /* Only one title now */
+      strings : ["Data Scientist", "Software Engineer", "AI Engineer"], /* Only one title now */
       loop : true,
       typeSpeed : 120, 
       backSpeed : 90,
